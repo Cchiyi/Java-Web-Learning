@@ -3,3 +3,20 @@ Day 1 2020-01-13
 迫不得已自己在bin后面加了\突然就好了，也不清楚是怎么回事。
 1.8的jdk安装目录没有jre，本来还以为是自己安装出了问题，看样子不是的。
 还需要下载mysql的JDBC驱动文件，直接到官网下载，选择download-community-connection/j-indepence 选zip然后skip 然后把zip里的jar解压出来扔到tomcat的lib里面
+
+JavaEE创建web项目后访问自己编写的类一直404，搞了两个小时发现是out没有设置好，应该把路径改成WEB-INF下的classes
+就在Project Settings->Project->Project compiler output的路径
+各种创建教程只说要更改Modules下的Output path和Test output path为classes
+也许环境设置的踩坑也是学习的一部分（逃
+
+用自身编写的类Servlet接口时写了一行idea就开始标红，心里有点没底，网上查了查也没结果，点了一下红色的电灯泡。
+其中一个是把自己编写的类变成抽象类，另一个点一下开始出现Servlet接口的全部结构，然后就不标红了。这么说idea的语法检查功能真的是很省事儿的。
+
+servlet的周期 开始时调用init() 过程中调用service 结束后调用destroy()
+
+同一个servlet可以被映射到多个URL上，也就是可以创建多个url-pattern
+Servlet映射的URL可以使用通配符
+无论在web中访问什么资源【包括JSP】，都是在访问Servlet
+实现Servlet之间通讯就要用到ServletContext的setAttribute(String name,Object obj)方法， 第一个参数是关键字，第二个参数是你要存储的对象
+web.xml文件支持对整个站点进行配置参数信息
+
